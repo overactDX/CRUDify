@@ -6,6 +6,10 @@ router.get('/product' , (req , res) => {
     res.send('Hello Product')
 });
 
+router.get('/product/:id' , (req , res) => {
+    res.send('Hello 1 Product')
+});
+
 router.post('/product' , (req , res) => {
     res.send('eieiei')
 })
@@ -13,7 +17,6 @@ router.post('/product' , (req , res) => {
 router.put('/product' , (req , res) => {
     res.send('55555')
 })
-
 
 router.delete('/product' , (req , res) => {
     res.json({name : 'tam' , id : 555})
