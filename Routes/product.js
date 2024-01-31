@@ -14,11 +14,11 @@ router.post('/product' , (req , res) => {
     res.send('eieiei')
 })
 
-router.put('/product' , (req , res) => {
-    res.send('55555')
+router.put('/product/:id' , (req , res) => {
+    res.send('55555 id 1')
 })
 
-router.delete('/product' , (req , res) => {
+router.delete('/product/:id' , (req , res) => {
     res.json({name : 'tam' , id : 555})
 })
 
