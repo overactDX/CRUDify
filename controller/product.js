@@ -18,7 +18,7 @@ exports.list = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    res.send("Hello Create");
+    res.send("Hello Create !!!");
   } catch (error) {
     console.log(error);
     res.status(500).send("Server Error");
