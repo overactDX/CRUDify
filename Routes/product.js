@@ -1,25 +1,23 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
+const {
+  read,
+  list,
+  create,
+  update,
+  remove,
+} = require("../controller/product");
 
 // http://localhost:5000/api/product
-router.get('/product' , (req , res) => {
-    res.send('Hello Product')
-});
 
-router.get('/product/:id' , (req , res) => {
-    res.send('Hello 1 Product')
-});
+router.get("/product", list);
 
-router.post('/product' , (req , res) => {
-    res.send('eieiei')
-})
+router.get("/product/:id", read);
 
-router.put('/product/:id' , (req , res) => {
-    res.send('55555 id 1')
-})
+router.post("/product", create);
 
-router.delete('/product/:id' , (req , res) => {
-    res.json({name : 'tam' , id : 555})
-})
+router.put("/product/:id", update);
+
+router.delete("/product/:id", remove);
 
 module.exports = router;
