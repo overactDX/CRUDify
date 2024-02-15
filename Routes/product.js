@@ -6,7 +6,7 @@ const {
   create,
   update,
   remove,
-} = require("../controller/product");
+} = require("../controller/Product");
 
 // http://localhost:5000/api/product
 
