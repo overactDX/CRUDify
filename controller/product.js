@@ -1,4 +1,4 @@
-const Production = require("../model/Product");
+const Production = require("../Model/Product");
 
 exports.read = async (req, res) => {
   try {

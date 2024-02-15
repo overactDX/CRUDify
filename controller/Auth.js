@@ -1,4 +1,4 @@
-const User = require("../model/Users");
+const User = require("../Model/Users");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -28,26 +28,25 @@ exports.login = async (req, res) => {
     //1.CheckUser
     const { name, password } = req.body;
     var user = await User.findOneAndUpdate({ name }, { new: true });
-    console.log(user);
-
     if (user) {
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
         return res.status(400).send("Password Invalid !!");
       }
-
+      //2.Payload
       var payload = {
-        user : {
-          name : user.name,
-        }
-      }
-    }
-
-    //2.Payload
-
+        user: {
+          name: user.name,
+        },
+      };
     //3.generateToken
-
-    res.send("Hello Login fun");
+      jwt.sign(payload, "jwtsecret", { expiresIn: 3000 }, (err, token) => {
+        if (err) throw err;
+        res.json({ token, payload });
+      });
+    } else {
+      return res.status(400).send('User not found !!!')
+    }
   } catch (err) {
     console.log(err);
     res.status(500).send("Server Error");

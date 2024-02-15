@@ -1,23 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const {
-  read,
-  list,
-  create,
-  update,
-  remove,
-} = require("../controller/Product");
+const { read, list, create, update, remove } = require("../controller/Product");
 
 // http://localhost:5000/api/product
 
-router.get("/product", list);
+// middleware
+const { auth } = require("../Middleware/Auth");
 
-router.get("/product/:id", read);
+router.get("/product", auth, list);
 
-router.post("/product", create);
+router.get("/product/:id", auth, read);
 
-router.put("/product/:id", update);
+router.post("/product", auth, create);
 
-router.delete("/product/:id", remove);
+router.put("/product/:id", auth, update);
+
+router.delete("/product/:id", auth, remove);
 
 module.exports = router;
