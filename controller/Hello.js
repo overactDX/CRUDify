@@ -1,3 +1,3 @@
 exports.hello = async (req, res) => {
-  res.send("hello data");
+  res.send("hello data eiei");
 };
